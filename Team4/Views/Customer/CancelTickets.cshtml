@@ -1,0 +1,36 @@
+﻿@model Team4.Models.cancelTicket
+@{
+    ViewBag.Title = "CancelTickets";
+}
+
+<h2>Cancel Tickets</h2>
+@using (Html.BeginForm("Cancelbus", "Customer"))
+{
+<table>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Customer ID</td>
+        <td>@Html.TextBoxFor(a => a.Cid, new { Value = ViewBag.cid })</td>
+        <td>@Html.ValidationMessageFor(a => a.Cid, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            Ticket id
+        </td>
+        <td>@Html.DropDownListFor(a => a.Bid, new SelectList(ViewBag.Bookid, "Ticket_ID", "Ticket_ID"), "Select")</td>
+        <td>@Html.ValidationMessageFor(a => a.Bid, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td><input type="submit" value="Cancel" /></td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+</table>
+    <h3>
+        @if (ViewBag.msg != null)
+        {
+            @ViewBag.msg
+        }
+    </h3>
+}

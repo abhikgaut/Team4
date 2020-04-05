@@ -1,0 +1,63 @@
+﻿@model Team4.Models.addBus
+@{
+    ViewBag.Title = "AddBus";
+}
+
+<h2>Add the bus details</h2>
+@using (Html.BeginForm("AddBusDB", "Admin"))
+{
+<table>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            Bus Name
+        </td>
+        <td>
+            @Html.TextBoxFor(a => a.BusName)
+        </td>
+        <td>@Html.ValidationMessageFor(a => a.BusName, "", new { @class = "text-danger" })</td>
+
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            Bus Type
+        </td>
+        <td>
+            @Html.DropDownListFor(a => a.Type, new List<SelectListItem> {
+            new SelectListItem { Value="A/C Semi Sleeper",Text="A/C Semi Sleeper" },
+            new SelectListItem { Value = "A/C Sleeper" , Text = "A/C Sleeper" },
+            new SelectListItem { Value = "Non A/C seater" ,Text = "Non A/C seater" }
+            }, "Select bus type", new { @class = "form-control" })
+        </td>
+        <td>@Html.ValidationMessageFor(a => a.Type, "", new { @class = "text-danger" })</td>
+
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            Capacity
+        </td>
+        <td>
+            @Html.TextBoxFor(a => a.Capacity)
+        </td>
+        <td>@Html.ValidationMessageFor(a => a.Capacity, "", new { @class = "text-danger" })</td>
+
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            <input type="submit" value="submit" />
+        </td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+</table>
+    <h3>
+        @if (ViewBag.msg != null)
+        {
+            @ViewBag.msg
+        }
+    </h3>
+}
+
+

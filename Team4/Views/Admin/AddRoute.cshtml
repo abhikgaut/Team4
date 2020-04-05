@@ -1,0 +1,50 @@
+﻿@model Team4.Models.addRoute
+@{
+    ViewBag.Title = "AddRoute";
+}
+
+<h2>Add the Route details</h2>
+@using (Html.BeginForm("AddRouteDB", "Admin"))
+{
+<table>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            From
+        </td>
+        <td>@Html.DropDownListFor(a => a.From, new SelectList(ViewBag.loc,"location","location"), "Select")</td>
+        <td>@Html.ValidationMessageFor(a => a.From, "", new { @class = "text-danger" })</td>
+
+
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>To</td>
+        <td>@Html.DropDownListFor(a => a.To, new SelectList(ViewBag.loc, "location", "location"), "Select")</td>
+        <td>@Html.ValidationMessageFor(a => a.To, "", new { @class = "text-danger" })</td>
+
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Cost</td>
+        <td>@Html.TextBoxFor(a => a.Cost)</td>
+        <td>@Html.ValidationMessageFor(a => a.Cost, "", new { @class = "text-danger" })</td>
+
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            <input type="submit" value="submit" />
+        </td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+</table>
+    <h3>
+        @if (ViewBag.msg != null)
+        {
+            @ViewBag.msg
+        }
+    </h3>
+}
+
+

@@ -1,0 +1,40 @@
+﻿@model Team4.Models.loginValidation
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>LOGIN</h2>
+@using (Html.BeginForm("getBack", "User"))
+{
+<table>
+    
+    <tr>
+        <td>User name:</td>
+        <td>@Html.TextBoxFor(a => a.Username)</td>
+        <td>@Html.ValidationMessageFor(a => a.Username, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Password:</td>
+        <td>@Html.PasswordFor(a => a.Password)</td>
+        <td>@Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            @Html.ActionLink("New user? Register here!", "registration", "User", null, null)
+        </td>
+        <td><input type="submit" value="submit"></td>
+        <td></td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+</table>
+    if (ViewBag.msg != null)
+
+    {
+
+        <h3>@ViewBag.msg</h3>
+
+    }
+}
+

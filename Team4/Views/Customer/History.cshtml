@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "History";
+}
+
+<h2>Booking History</h2>
+@using (Html.BeginForm())
+{
+    if (ViewBag.L != null)
+    {
+        <table border="1" cellpadding="15" cellspacing="15">
+
+            <tr>
+
+                <th style="height:50px;width:80px">Customer ID</th>
+                <th style="height:50px;width:80px">Ticket ID</th>
+                <th style="height:50px;width:80px">No of Ticket</th>
+                <th style="height:50px;width:80px">Bus ID</th>
+                <th style="height:50px;width:80px">Bus name</th>
+                <th style="height:50px;width:80px">Type</th>
+                <th style="height:50px;width:80px">From</th>
+                <th style="height:50px;width:80px">To</th>
+                <th style="height:50px;width:80px">Cost</th>
+                <th style="height:50px;width:80px">Start Time</th>
+                <th style="height:50px;width:80px">Date of journey</th>
+                <th style="height:50px;width:80px">Total Cost</th>
+            </tr>
+            @foreach (var row in ViewBag.L)
+            {
+                <tr>
+                    <td style="height:50px;width:80px">@row.Customer_ID</td>
+                    <td style="height:50px;width:80px">@row.Ticket_ID</td>
+                    <td style="height:50px;width:80px">@row.NoOfTickets</td>
+                    <td style="height:50px;width:80px">@row.Bus_ID</td>
+                    <td style="height:50px;width:80px">@row.Bus_Name</td>
+                    <td style="height:50px;width:80px">@row.Type</td>
+                    <td style="height:50px;width:80px">@row.From</td>
+                    <td style="height:50px;width:80px">@row.To</td>
+                    <td style="height:50px;width:80px">@row.Cost</td>
+                    <td style="height:50px;width:80px">@row.StartTime</td>
+                    <td style="height:50px;width:80px">@row.DateOfJourney</td>
+                    <td style="height:50px;width:80px">@row.TotalCost</td>
+                </tr>
+
+            }
+        </table>
+
+    }
+    else
+    {
+        if (ViewBag.msg != null)
+
+        {
+
+            <h3>@ViewBag.msg</h3>
+
+        }
+    }
+
+
+}
+
+

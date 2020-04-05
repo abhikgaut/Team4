@@ -1,0 +1,94 @@
+﻿@model Team4.Models.bookTickets
+@{
+    ViewBag.Title = "BookTicket";
+}
+
+<h2>Book Ticket</h2>
+@using (Html.BeginForm("CheckBus", "Customer"))
+{
+<table>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Customer ID</td>
+        <td>@Html.TextBoxFor(a => a.Cid, new { Value = ViewBag.cid })</td>
+        <td>@Html.ValidationMessageFor(a => a.Cid, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>From Location</td>
+        <td>@Html.TextBoxFor(a => a.From)</td>
+        <td>@Html.ValidationMessageFor(a => a.From, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>To Location</td>
+        <td>@Html.TextBoxFor(a => a.To)</td>
+        <td>@Html.ValidationMessageFor(a => a.To, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Date of Journey</td>
+        <td>
+            @Html.EditorFor(a => a.Starttime)
+        </td>
+        <td>@Html.ValidationMessageFor(a => a.Starttime, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>No of Tickets</td>
+        <td>@Html.TextBoxFor(a => a.Not)</td>
+        <td>@Html.ValidationMessageFor(a => a.Not, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td><input type="submit" value="Search" /></td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+</table>
+
+}
+
+@using (Html.BeginForm("BookBus", "Customer"))
+{
+    if (ViewBag.bd != null)
+    {
+        <table border="1" cellpadding="15" cellspacing="10">
+
+            <tr>
+                <th style="height:50px;width:80px"></th>
+                <th style="height:50px;width:80px">Bus Name</th>
+                <th style="height:50px;width:80px">Seats Available</th>
+                <th style="height:50px;width:80px">schedule Timing</th>
+                <th style="height:50px;width:80px">Total cost</th>
+
+            </tr>
+            @foreach (var row in ViewBag.bd)
+            {
+                <tr>
+                    <td style="height:50px;width:80px">@Html.RadioButton("sid", new { @row.SID })</td>
+                    <td style="height:50px;width:80px">@row.Bus_Name</td>
+                    <td style="height:50px;width:80px">@row.AvailableSeats</td>
+                    <td style="height:50px;width:80px">@row.StartTime</td>
+                    <td style="height:50px;width:80px">@row.TotalCost</td>
+
+                </tr>
+
+            }
+            <tr>
+                <td><input type="submit" value="Book" /></td>
+            </tr>
+        </table>
+    }
+    <h3>
+        @if (ViewBag.nb != null)
+        {
+            @ViewBag.nb
+        }
+    </h3>
+}
+<h3>
+    @if (ViewBag.msg != null)
+    {
+        @ViewBag.msg
+    }
+</h3>

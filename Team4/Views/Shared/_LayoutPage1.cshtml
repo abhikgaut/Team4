@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/style/StyleSheet1.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="Main">
+        <p><b><font color="red" size="4"><marquee direction="right">Book Your Tickets here</marquee></font></b></p>
+    </div>
+    <div class="Main1">
+
+        <img src="~/image/newlogo.jpg" />
+        @*<img src="~/image/newlogo.jpg" class="img" />*@
+    </div>
+    <div class="bar">
+
+
+    </div>
+    <div style="position:absolute;top:70%;left:45%;font-size:20px" id="demotext">THIS PORTAL WILL HELP YOU TO BOOK TICKETS WITHOUT ANY HASSLE</div>
+    <div style="position:absolute;top:70%;left:15%">
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f1b5ebf367246d7aff67370e12137cb" Name="Diagram1">
+        <EntityTypeShape EntityType="Team4Model.Booking_Table" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Team4Model.BusDetails_Table" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Team4Model.Customer_Table" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Team4Model.Login_Table" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Team4Model.Route_Table" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Team4Model.Schedule_Table" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Team4Model.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Team4Model.FK_Booking_Table_Customer_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="Team4Model.FK_Booking_Table_Schedule_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="Team4Model.FK_Schedule_Table_BusDetails_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="Team4Model.FK_Schedule_Table_Route_Table1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Team4Model.ViewHistory" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Team4Model.CS_Table" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Team4Model.destination" Width="1.5" PointX="8.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

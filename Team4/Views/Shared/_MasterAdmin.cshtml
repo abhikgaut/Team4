@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/style/mystylesheet.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="Main">
+
+        <img src="~/image/admin.jpg" class="img" />
+    </div>
+    <div class="div2">
+        <ul>
+            <li><a href="~/Admin/Addroute">AddRoute</a></li>
+            <li><a href="~/Admin/AddBus">AddBus</a></li>
+            <li><a href="~/Admin/AddSchedule">AddSchedule</a></li>
+            <li>
+                @Html.ActionLink("LOGOUT", "logout", "User", null, null)
+            </li>
+        </ul>
+    </div>
+    <div style="position:absolute;top:55%;left:15%">
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+﻿@model Team4.Models.regValidation
+@{
+    ViewBag.Title = "registration";
+}
+
+<h2>Registration</h2>
+@using (Html.BeginForm())
+{
+<table border="0">
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Name:</td>
+        <td>@Html.TextBoxFor(a => a.Name)</td>
+        <td>@Html.ValidationMessageFor(a => a.Name, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Address:</td>
+        <td>@Html.TextBoxFor(a => a.Address)</td>
+        <td>@Html.ValidationMessageFor(a => a.Address, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>City:</td>
+        <td>@Html.TextBoxFor(a => a.City)</td>
+        <td>@Html.ValidationMessageFor(a => a.City, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Country:</td>
+        <td>
+            <div class="col-md-10">
+                @Html.DropDownListFor(a => a.Country, new SelectList(ViewBag.CL), "Select Country")
+            </div>
+        </td>
+        <td> @Html.ValidationMessageFor(a => a.Country, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>State:</td>
+        <td>
+            <div class="col-md-10">
+                @Html.DropDownListFor(a => a.State, new SelectList(""), "Select State",
+                          new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </td>
+        <td>@Html.ValidationMessageFor(a => a.State, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Pincode:</td>
+        <td>@Html.TextBoxFor(a => a.Pincode)</td>
+        <td>@Html.ValidationMessageFor(a => a.Pincode, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Email Address:</td>
+        <td>@Html.TextBoxFor(a => a.Email)</td>
+        <td>@Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Gender:</td>
+        <td>
+            @Html.RadioButtonFor(a => a.Gender, "Male")Male
+            @Html.RadioButtonFor(a => a.Gender, "Female")Female
+        </td>
+        <td>@Html.ValidationMessageFor(a => a.Gender, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Contact no:</td>
+        <td>@Html.TextBoxFor(a => a.Contact)</td>
+        <td>@Html.ValidationMessageFor(a => a.Contact, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>date of birth:</td>
+        <td>@Html.TextBoxFor(a => a.Dob)</td>
+        <td>@Html.ValidationMessageFor(a => a.Dob, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Customer type:</td>
+        <td>
+            @Html.DropDownListFor(a => a.Ctype, new List<SelectListItem> {
+            new SelectListItem{Value="Government Officer",Text="Government Officer"},
+            new SelectListItem{Value="Government Employee",Text="Government Employee"},
+            new SelectListItem{Value="Private Employee",Text="Private Employee"},
+            new SelectListItem{Value="Student",Text="Student"},
+            new SelectListItem{Value="Others",Text="Others"}
+            }, "Select Customer Type", new { @class = "form-control" })
+        </td>
+        <td>@Html.ValidationMessageFor(a => a.Ctype, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Password:</td>
+        <td>@Html.PasswordFor(a => a.Password)</td>
+        <td>@Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>Confirm password:</td>
+        <td>@Html.PasswordFor(a => a.Cpassword)</td>
+        <td>@Html.ValidationMessageFor(a => a.Cpassword, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Already registered,Login here!", "Index", "User", null, null)
+        </td>
+        <td><input type="submit" value="submit"></td>
+        <td></td>
+    </tr>
+    <tr><td>&nbsp;</td></tr>
+</table>
+}
+
+@if (ViewBag.msg != null)
+
+{
+
+<h3>@ViewBag.msg</h3>
+
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#Country").blur(function () {
+            //alert($(this).val());
+            $.ajax({
+                type: "post",
+                url: '/User/getStates?Country=' + $(this).val(),
+                contentType: "html",
+                success: function (response) {
+                    $("#State").empty();
+                    $("#State").append(response);
+
+                }
+            }); //End of Ajax
+        });
+    });
+
+</script>

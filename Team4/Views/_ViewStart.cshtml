@@ -1,0 +1,17 @@
+﻿@{
+    if (HttpContext.Current.Session["type"] != null)
+    {
+        if (HttpContext.Current.Session["type"].ToString() == "Admin")
+        {
+            Layout = "~/Views/Shared/_MasterAdmin.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_MasterUser.cshtml";
+        }
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    }
+}

@@ -1,0 +1,12 @@
+﻿
+@model Team4.Models.CS_Table
+
+<option value="">--Select State</option>
+@if (ViewBag.SList != null)
+{
+    foreach (var item in ViewBag.SList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+
+}
