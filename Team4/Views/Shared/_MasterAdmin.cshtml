@@ -9,6 +9,9 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @if (HttpContext.Current.Session["user"] != null)
+    {
+
     <div id="Main">
 
         <img src="~/image/admin.jpg" class="img" />
@@ -26,5 +29,10 @@
     <div style="position:absolute;top:55%;left:15%">
         @RenderBody()
     </div>
+    }
+    else
+    {
+        Response.Redirect("~/User/Index");
+    }
 </body>
 </html>

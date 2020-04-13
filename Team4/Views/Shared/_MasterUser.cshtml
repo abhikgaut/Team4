@@ -9,31 +9,38 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div id="Main">
+    @if (HttpContext.Current.Session["user"] != null)
+    {
+        <div id="Main">
 
-        <img src="~/image/customer.png" class="img" />
-    </div>
-    <div class="div2">
-        <ul>
-            <li><a href="~/Customer/BookTickets">Book Ticket</a></li>
-            <li><a href="~/Customer/CancelTickets">Cancel Ticket</a></li>
-            <li><a href="~/Customer/UpdateProfile">Update profile</a></li>
-            <li><a href="~/customer/History">Booking history</a></li>
-            <li>
-                @Html.ActionLink("LOGOUT", "logout", "User", null, null)
-            </li>
-            <li>
-                @if (HttpContext.Current.Session["user"] != null)
-                {
-                    <h4><font color="red">welcome @HttpContext.Current.Session["user"]</font></h4>
-                }
-            </li>
-        </ul>
-    </div>
-   
-    <div style="position:absolute;top:55%;left:15%">
-        @RenderBody()
-    </div>
+            <img src="~/image/customer.png" class="img" />
+        </div>
+        <div class="div2">
+            <ul>
+                <li><a href="~/Customer/BookTickets">Book Ticket</a></li>
+                <li><a href="~/Customer/CancelTickets">Cancel Ticket</a></li>
+                <li><a href="~/Customer/UpdateProfile">Update profile</a></li>
+                <li><a href="~/customer/History">Booking history</a></li>
+                <li>
+                    @Html.ActionLink("LOGOUT", "logout", "User", null, null)
+                </li>
+                <li>
+                    @if (HttpContext.Current.Session["user"] != null)
+                    {
+                        <h4><font color="red">welcome @HttpContext.Current.Session["user"]</font></h4>
+                    }
+                </li>
+            </ul>
+        </div>
+
+        <div style="position:absolute;top:55%;left:15%">
+            @RenderBody()
+        </div>
+    }
+    else
+    {
+        Response.Redirect("~/User/Index");
+    }
 </body>
 </html>
 

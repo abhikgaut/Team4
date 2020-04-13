@@ -137,8 +137,8 @@ namespace Team4.Controllers
                 regValidation C1 = userBus.insertLogin(C);
                 if (C1 != null)
                 {
-                    TempData["Message"] = "Your Username is " + C.CustomeriD;
-                    return RedirectToAction("Index");
+                    ViewBag.msg = "Your Username is " + C.CustomeriD;
+                    return RedirectToAction("registration");
                 }
                 else
                 {

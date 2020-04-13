@@ -51,7 +51,7 @@ namespace Team4.Models
                         where L.Bus_Name.ToUpper() == name.ToUpper() && L.Type.ToUpper() == type.ToUpper()
                         select L;
                 if (b.Count() > 0)
-                    return "route already exists";
+                    return "Bus already exists";
                 int rid = (from r in d.BusDetails_Table
                            select r).Count() + 1;
                 BusDetails_Table Bt = new BusDetails_Table();
@@ -281,7 +281,7 @@ namespace Team4.Models
                 Schedule_Table S = s.FirstOrDefault();
                 string rid = S.Route_ID;
                 DateTime dateOT = S.DateOfJourney;
-                int timeOT = int.Parse(S.StartTime.TotalHours.ToString());
+                int timeOT = int.Parse(S.StartTime.Hours.ToString());
                 DateTime todaydate = DateTime.Now;
                 int age = (int)(dateOT.Subtract(todaydate).TotalHours);
                 int hoursLeft = age + timeOT;

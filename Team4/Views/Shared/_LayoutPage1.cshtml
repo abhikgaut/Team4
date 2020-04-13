@@ -9,6 +9,8 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @if (Request.Url.AbsolutePath == "/User/Index" || Request.Url.AbsolutePath == "/User/registration")
+    {
     <div class="Main">
         <p><b><font color="red" size="4"><marquee direction="right">Book Your Tickets here</marquee></font></b></p>
     </div>
@@ -25,5 +27,6 @@
     <div style="position:absolute;top:70%;left:15%">
         @RenderBody()
     </div>
+    }
 </body>
 </html>

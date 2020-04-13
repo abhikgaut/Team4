@@ -138,15 +138,16 @@ namespace Team4.Controllers
                     Weightage = 5;
                 }
 
-                //ViewBag.CL = Clist;
                 int cid = Convert.ToInt32(Session["user"]);
+                Clist = userBus.SendCnames();
+                ViewBag.CL = Clist;
                 ViewBag.msg = DbClass.updateCustomer(C,cid);                    
                     return View("UpdateProfile");
                 
 
             }
-
-                ViewBag.CL = Clist;
+            Clist = userBus.SendCnames();
+            ViewBag.CL = Clist;
                 return View("UpdateProfile");
             
         }
